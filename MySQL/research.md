@@ -134,3 +134,47 @@ Here are some best practices you can follow to ensure proper naming conventions 
 - **Create a Guideline for Naming Conventions**: Your naming convention should also be documented and shared with your teams. Create rules for the number of characters in the file name, metadata information and more. If you are using different metadata for different file sets, you may consider creating an excel sheet with all the information to share with the concerned stakeholders.
 
 ### [reference](https://www.itglue.com/blog/naming-conventions-examples-formats-best-practices/)
+
+
+
+
+# Task 3
+
+## primary keys vs unique keys.
+|Criteria|      Primary Keys       |      Unique Keys      |
+|-----| :--------------- | :--------------- |
+|**Basic Function** | The primary key uniquely identifies each record in the table. | The unique key serves as a unique identifier for records when a primary key is absent.|
+|**NULL Values** |The primary key cannot store NULL values.|The unique key can store a null value, but only one NULL value is allowed.|
+|**Purpose** |It ensures entity integrity.|It enforces unique data.|
+|**Index Creation**	|	By default, the primary key creates a clustered index.|The unique key generates a non-clustered index.|
+|**Number of Keys** |Each table can have only one primary key.|A table can have multiple unique keys.|
+|**Value Modification** |You cannot modify or delete values in a primary key.|You can modify the values in a unique key.|
+|**Uses** |It identifies specific records in the table.|It prevents duplicate entries in a column, except for a NULL value.|
+### [reference](https://testbook.com/key-differences/difference-between-primary-key-and-unique-key#:~:text=Distinguishing%20Between%20Primary%20Key%20and%20Unique%20Key&text=The%20primary%20key%20uniquely%20identifies,a%20primary%20key%20is%20absent.&text=The%20primary%20key%20cannot%20store,one%20NULL%20value%20is%20allowed.)
+<hr>
+
+## constraints in MySQL.
+```SQL``` constraints are used to specify rules for data in a table like :
+- **NOT NULL** - Ensures that a column cannot have a NULL value
+- **UNIQUE** - Ensures that all values in a column are different
+- **PRIMARY KEY** - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+- **FOREIGN KEY** - Prevents actions that would destroy links between tables
+- **CHECK** - Ensures that the values in a column satisfies a specific condition
+- **DEFAULT** - Sets a default value for a column if no value is specified
+- **CREATE INDEX** - Used to create and retrieve data from the database very quickly
+
+
+### [reference](https://www.w3schools.com/mysql/mysql_constraints.asp)
+
+
+## indexing in MySQL.
+
+<p>Indexes are used to find rows with specific column values quickly. Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs. If the table has an index for the columns in question, MySQL can quickly determine the position to seek to in the middle of the data file without having to look at all the data. This is much faster than reading every row sequentially.</p>
+
+### [reference](https://dev.mysql.com/doc/refman/8.4/en/mysql-indexes.html)
+
+## Difference between MySQL and Postgresql
+
+MySQL and PostgreSQL are two of the most widely used open-source relational database management systems. MySQL is known for its speed and ease of use, making it ideal for web applications and read-heavy workloads. PostgreSQL called “Postgres,” offers advanced features and strong data integrity by making it suitable for complex queries and transactions.
+
+### [reference](https://www.geeksforgeeks.org/difference-between-mysql-and-postgresql/)
