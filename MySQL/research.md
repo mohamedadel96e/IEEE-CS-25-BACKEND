@@ -178,3 +178,84 @@ Here are some best practices you can follow to ensure proper naming conventions 
 MySQL and PostgreSQL are two of the most widely used open-source relational database management systems. MySQL is known for its speed and ease of use, making it ideal for web applications and read-heavy workloads. PostgreSQL called “Postgres,” offers advanced features and strong data integrity by making it suitable for complex queries and transactions.
 
 ### [reference](https://www.geeksforgeeks.org/difference-between-mysql-and-postgresql/)
+
+
+# Task 4
+
+
+## Relationships in SQL - One-to-One, One-to-Many, Many-to-Many.
+
+Relationships in SQL tables define how tables are connected to one another. Building relationships in tables helps to organize and link data across multiple tables. Creating relationships among tables provides efficient data retrieval and maintenance maintenance.
+
+Relationships in SQL refer to the associations or connections between tables in a relational database. These relationships are established using foreign keys, which are columns in a table that refer to the primary key in another table. Relationships help organize and structure data, allowing for efficient data retrieval and maintaining data integrity.
+### Type of Relationships in SQL
+There are different types of relationships: one-to-one, one-to-many, many-to-many, and self-referencing.
+
+1.**One-to-One Relationship**
+  - **Definition**: Each record in Table A is associated with one and only one record in Table B, and vice versa.
+  - **Setup**: Include a foreign key in one of the tables that references the primary key of the other table.
+  - **For example**: Tables users and user_profiles, where each user has a single corresponding profile.
+  <br>
+
+2.**One-to-Many Relationship**
+  - **Definition**: Each record in Table A can be associated with one or more records in Table B, but each record in Table B is associated with only one record in Table A.
+  - **Setup**: Include a foreign key in the many side (Table B) that references the primary key of the one side (Table A).
+  - **For example**: Tables departments and employees, where each department can have multiple employees, but each employee belongs to only one department.
+  <br>
+
+3.**Many-to-Many Relationship**
+  - **Definition**: Each record in Table A can be associated with one or more records in Table B, and vice versa.
+  - **Setup**: Create a junction table that includes foreign keys to both tables A and B.
+  - **For example**: Tables students and courses, where each student can enroll in multiple courses, and each course can have multiple students.
+  <br>
+
+4.**Self Referencing Relationship**
+  - **Definition**: A table that references itself.
+  - **Setup**: Include a foreign key in the table that references its own primary key.
+  - **For example**: A table employees with a manager_id column that references the employee_id of another record in the same table.
+  <br>
+
+### [reference](https://www.geeksforgeeks.org/relationships-in-sql-one-to-one-one-to-many-many-to-many/)
+
+
+## Write-ahead logging.
+
+Write-Ahead Logging (WAL) is a technique used in storage systems to ensure the durability and consistency of transactions.
+
+- The basic idea behind WAL is to record changes in a log before they are applied to the actual storage.
+- This log, often referred to as the write-ahead log, contains a sequential record of all changes made to the database.
+- Transactions are not considered complete until the corresponding changes are safely recorded in the write-ahead log.
+
+### [reference](https://medium.com/@vinciabhinav7/write-ahead-logs-but-why-494c3efd722d)
+### [Another Reference](https://www.youtube.com/watch?v=PLnH8-BQmMg)
+
+## Denormalized vs. Normalized Data
+
+#### Normalization and denormalization are two key concepts in database design. This blog post delves into their key differences, use cases, and how to choose the best approach.
+
+Normalization and denormalization are two key concepts in database design, each serving a specific purpose. The goal of normalization is to minimize data redundancy and dependency by organizing data into well-structured tables. Denormalization involves combining tables that have been normalized to improve query performance and simplify data retrieval.
+
+The choice between the two depends on the specific requirements of the application and the balance between data consistency and system performance, but both play a very important role in data management. 
+
+### What Is Normalized Data?
+Normalized data refers to a database design technique that organizes data in a way that reduces redundancy and improves data integrity. The primary goal of normalization is to eliminate data anomalies and inconsistencies by organizing data into well-structured tables that adhere to certain rules.
+
+The normalization process involves breaking down large tables into smaller, related tables and establishing relationships between them. This is achieved through a series of normal forms, each building on the previous one. The most common normal forms include:
+
+- **First normal form (1NF)**, which eliminates duplicate columns within a table and ensures that each column contains atomic (indivisible) values.
+- **Second normal form (2NF)**, which meets the requirements of 1NF and removes partial dependencies by ensuring that all non-key attributes are fully functionally dependent on the primary key.
+- **Third normal form (3NF)**, which meets the requirements of 2NF and eliminates transitive dependencies by ensuring that non-key attributes are not dependent on other non-key attributes.
+
+
+### What Is Denormalized Data?
+Denormalized data refers to a database design approach where data from multiple tables is combined into a single table. The purpose of denormalization is to optimize data retrieval and improve performance, especially in scenarios where read operations significantly outnumber write operations. Unlike normalization, denormalization sacrifices some redundancy and data integrity in favor of faster query execution.
+
+In denormalized data, related information that would typically be distributed across separate tables in a normalized database is consolidated into a single, flat table. This consolidation reduces the need for complex joins during query execution, as all the required data is available in one place. This approach is often used in data warehousing and business intelligence applications where the emphasis is on analytical processing rather than transactional processing.
+
+Benefits of Denormalized Data
+The benefits of denormalized data include:
+
+- **Optimized data retrieval:** Denormalization aims to improve query performance by minimizing the number of joins needed to retrieve data. This is particularly beneficial in situations where complex queries are executed frequently. 
+- **Simplified data analysis:** Analytical tasks and reporting can be simplified with denormalized data because all relevant information is stored in one place. This makes it easier to generate reports and perform data analysis without the complexity of navigating through multiple tables.
+
+### [reference](https://blog.purestorage.com/purely-educational/denormalized-vs-normalized-data/#:~:text=The%20goal%20of%20normalization%20is,performance%20and%20simplify%20data%20retrieval.)
