@@ -259,3 +259,114 @@ The benefits of denormalized data include:
 - **Simplified data analysis:** Analytical tasks and reporting can be simplified with denormalized data because all relevant information is stored in one place. This makes it easier to generate reports and perform data analysis without the complexity of navigating through multiple tables.
 
 ### [reference](https://blog.purestorage.com/purely-educational/denormalized-vs-normalized-data/#:~:text=The%20goal%20of%20normalization%20is,performance%20and%20simplify%20data%20retrieval.)
+
+
+# Task 5
+
+## Multi-version concurrency Control
+
+### What is Multi-Version Concurrency Control (MVCC) in DBMS?
+Multi-Version Concurrency Control is a technology, utilized to enhance databases by resolving concurrency problems and also data locking by preserving older database versions. When many tasks attempt to update the same piece of data simultaneously, MVCC causes a conflict and necessitates a retry from one or more of the processes.
+
+### Types of Multi-Version Concurrency Control (MVCC) in DBMS
+
+
+- **Timestamp-based MVCC**: The data visibility to transactions is defined by the unique timestamp assigned to each transaction that creates a new version of a record.
+- **Snapshot-based MVCC**: This utilizes the database snapshot that is created at the beginning of a transaction to supply the information that is needed for the transaction.
+- **History-based MVCC**: This Keeps track of every modification made to a record, making transaction rollbacks simple.
+- **Hybrid MVCC**: This coordinates data flexibility and performance by combining two or more MVCC approaches.
+### How Does Multi-Version Concurrency Control (MVCC) in DBMS Works?
+- In the database, every tuple has a version number. The tuple with the greatest version number can have a read operation done on it simultaneously.
+- Only a copy of the record may be used for writing operations.
+- While the copy is being updated concurrently, the user may still view the previous version.
+- The version number is increased upon successful completion of the writing process.
+- The upgraded version is now used for every new record operation and every time there is an update, this cycle is repeated.
+
+### [reference](https://www.geeksforgeeks.org/what-is-multi-version-concurrency-control-mvcc-in-dbms/)
+
+## Triggers
+
+### What is a Trigger in DBMS?
+A trigger is a special kind of stored procedure that is activated ("triggered") in response to a particular event in a database.
+
+trigger is called automatically when a data modification event occurs against a table.
+
+There are different kinds of events that can activate a trigger like inserting or deleting rows in a table, a user logging into a database server instance, an update to a table column, a table is created, altered, or dropped, etc.
+
+### TYPES OF TRIGGERS
+
+1) DML triggers are automatically fired when an INSERT, UPDATE or DELETE event occurs on a table.
+
+2) DDL triggers are automatically invoked when a CREATE, ALTER, or DROP event occurs in a    database.
+
+3) Logon triggers is invoked when a LOGON event is raised when a user session is established.
+
+### WHY WE NEED TRIGGER
+
+Triggers will be helpful when we need to execute some events automatically on certain desirable scenarios. For example, we have a constantly changing table and need to know the occurrences of changes and when these changes happen. If the primary table made any changes in such scenarios, we could create a trigger to insert the desired data into a separate table.
+
+**FOR Triggers**
+
+The FOR triggers can be defined on tables or views. It fires only when all operations specified in the triggering SQL statement have initiated successfully.
+
+**AFTER Triggers**
+
+ The AFTER trigger fires only after the specified triggering SQL statement completed successfully. AFTER triggers cannot be defined on views.
+
+**INSTEAD OF Triggers**
+
+ An INSTEAD OF trigger allows you to override the INSERT, UPDATE, or DELETE operations on a table or view. The actual DML operations do not occur at all.
+
+**LOGON Triggers**
+
+In SQL Server, the Logon trigger is fired automatically on a LOGON event. They are DDL triggers and are created at the server level. We can define more than one LOGON trigger on a server.
+
+ 
+
+### DVANTAGES OF TRIGGERS
+
+- Triggers set database object rules and roll back if any change does not satisfy those rules. The trigger will inspect the data and make changes if necessary.
+
+- Triggers help us to enforce data integrity.
+
+- Triggers help us to validate data before inserted or updated.
+
+- Triggers help us to keep a log of records.
+
+- Triggers increase SQL queries' performance because they do not need to compile each time they  are executed.
+
+- Triggers reduce the client-side code that saves time and effort.
+
+- Triggers are easy to maintain.
+
+
+### DISADVANTAGES OF TRIGGERS
+
+- Triggers are invoked automatically, and their execution is invisible to the user. Therefore, it isn't easy to troubleshoot what happens in the database layer.
+
+- Triggers may increase the overhead of the database server.
+
+- We can define the same trigger action for multiple user actions such as INSERT and UPDATE in the same CREATE TRIGGER statement.
+
+- We can create a trigger in the current database only, but it can reference objects outside the current database.
+
+### [reference](https://www.geopits.com/blog/triggers-in-dbms.html)
+
+## How can you take the backup of a database?
+
+### Taking a backup of a database is essential to ensure data security and integrity. In MySQL, you can use the mysqldump command to create a backup of a database. The mysqldump command allows you to dump the contents of a database into a file, which can be used to restore the database in case of data loss or corruption.
+
+### Steps to Backup a MySQL Database Using the mysqldump Command:
+
+1. **Open a terminal window**.
+2. **Use the following command to create a backup of a MySQL database**:
+
+```powershell
+mysqldump -u username -p database_name > backup.sql
+```
+3. **Replace username with your MySQL username, database_name with the name of the database you want to back up, and backup.sql with the name of the backup file you want to create**.  
+4. **Enter your MySQL password when prompted**.
+5. **The backup file will be created in the current directory**.
+
+
+### [reference](https://www.sqlshack.com/how-to-backup-and-restore-mysql-databases-using-the-mysqldump-command/)
