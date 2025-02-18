@@ -1,4 +1,4 @@
-
+DROP DATABASE IF EXISTS shroweida;
 -- creating the database
 CREATE DATABASE shroweida;
 
@@ -11,7 +11,9 @@ CREATE TABLE IF NOT EXISTS AirlineCompanies(
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL UNIQUE,
   headquarters VARCHAR(255) NOT NULL,
-  fleet_size INT CHECK (fleet_size >= 0)
+  fleet_size INT CHECK (fleet_size >= 0),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
@@ -24,6 +26,8 @@ CREATE TABLE Planes (
   current_fuel_level INT CHECK (current_fuel_level >= 0 ),
   next_trip_date DATETIME,
   trip_destination VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   Foreign Key (airline_company_id) REFERENCES AirlineCompanies(id) ON DELETE CASCADE
 );
 
@@ -35,6 +39,8 @@ CREATE TABLE Flights (
   takeoff_time DATETIME NOT NULL,
   arrival_time DATETIME NOT NULL,
   plane_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   Foreign Key (plane_id) REFERENCES Planes(id) ON DELETE CASCADE
 );
 
@@ -47,6 +53,8 @@ CREATE TABLE Users (
   role ENUM ('Passenger', 'Airport Employee', 'Flight Attendant', 'Pilot') NOT NULL,
   salary DECIMAL(10,2) CHECK (salary >= 0) NULL DEFAULT NULL ,
   plane_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   Foreign Key (plane_id) REFERENCES Planes(id) ON DELETE SET NULL
 );
 
@@ -57,6 +65,8 @@ CREATE TABLE Runways (
   name VARCHAR(255) NOT NULL,
   flight_time DATETIME NOT NULL,
   status ENUM('open', 'close') NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   Foreign Key (plane_id) REFERENCES Planes(id) ON DELETE SET NULL
 );
 
@@ -64,6 +74,8 @@ CREATE TABLE PassengerFlights (
   passenger_id INT,
   flightId INT,
   PRIMARY KEY (passenger_id, flightId),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   Foreign Key (passenger_id) REFERENCES Users(id) ON DELETE CASCADE,
   Foreign Key (flightId) REFERENCES Flights(id) ON DELETE CASCADE
 );
