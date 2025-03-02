@@ -134,3 +134,55 @@ echo $b; // Output: World
 - https://www.bairesdev.com/blog/static-vs-dynamic-typing/
 
 - https://medium.com/@ingila185/assign-by-value-vs-assign-by-reference-javascript-2d5ec66453bf#:~:text=In%20JavaScript%2C%20primitive%20data%20types,manipulation%20of%20the%20other%20one.
+
+
+# Task 3
+## Difference Between For and Foreach in PHP
+
+### The 'for' loop
+It is an iterative loop that repeats a set of code till a specified condition is reached. It is used to execute a set of code for a specific number of times. Here, the number of times is the iterator variable.
+
+Syntax:
+```php
+for( initialization; condition; increment/decrement ) {
+// code to iterate and execute
+}
+```
+- **Initialization**: It is used to initialize the iterator variables. It also helps execute them one at a time without running the conditional statement at the beginning of the loop's condition.
+- **Condition**: This statement is executed and if the condition returns a True value, the loop continues and the statements within it are executed. If the condition gives a False value, the execution comes out of the loop.
+- **Increment**: It increments/increases the counter in the loop. It is executed at the end of every iteration without a break.
+- It doesn't hide the iteration.
+- It is complex in comparison to 'foreach' loop.
+- It takes more time to execute in comparison to 'foreach' loop.
+
+### The 'foreach' loop
+
+- It iterates over the elements of the array data structure.
+- It hides the iteration.
+- It is simple.
+- It performs better in comparison to 'for' loop.
+- It takes less time for the iteration.
+
+**Syntax:**
+```php
+foreach( $array as $element ) {
+// PHP Code to execute
+}
+foreach( $array as $key => $element) {
+// PHP Code to execute
+}
+```
+
+**Example**
+```php
+<?php
+$peop = array( "Will", "Jane", "Harold" );
+foreach( $ peop as $element ) {
+   echo $element . "<br>";
+}
+?>
+```
+
+## Resources
+
+- https://www.tutorialspoint.com/difference-between-for-and-foreach-in-php
