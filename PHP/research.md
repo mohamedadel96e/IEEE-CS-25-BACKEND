@@ -186,3 +186,116 @@ foreach( $ peop as $element ) {
 ## Resources
 
 - https://www.tutorialspoint.com/difference-between-for-and-foreach-in-php
+
+
+
+# Task 4
+
+## Sessions VS Cookies
+
+### 1. Cookies
+#### Cookies are small pieces of data stored on the client-side (browser). They help in tracking user activities and maintaining state across multiple requests.
+
+### Features of Cookies
+- **Storage Location:** Stored in the user's browser.
+- **Size Limit:** Typically up to 4KB.
+- **Lifespan:** Can have an expiration time (persistent cookies) or be deleted when the browser is closed (session cookies).
+- **Security:** Less secure as they are stored on the client-side and can be accessed or modified by the user.
+- **Accessibility:** Can be accessed by both the server and the client-side JavaScript (unless set as HttpOnly).
+- **Usage:** Used for storing small amounts of data like authentication tokens, user preferences, and tracking information.
+
+
+### 2. Sessions
+#### Sessions store user data on the server, and a session ID is sent to the client via a cookie or URL parameter to maintain the session.
+
+### Features of Sessions
+- **Storage Location**: Stored on the server.
+- **Size Limit**: No strict size limit (depends on server memory).
+- **Lifespan**: Lasts as long as the user is active or until it expires (default in PHP is 24 minutes).
+- **Security**: More secure since data is stored on the server, reducing exposure to client-side attacks.
+- **Accessibility**: Only the server can access session data.
+- **Usage**: Used for storing sensitive information like login credentials, shopping cart data, and user authentication.
+
+## Error Handling in PHP.
+
+When creating scripts and web applications, error handling is an important part. If your code lacks error checking code, your program may look very unprofessional and you may be open to security risks.
+
+This tutorial contains some of the most common error checking methods in PHP.
+
+We will show different error handling methods:
+
+- Simple "`die()`" statements
+- Custom errors and error triggers
+- Error reporting
+- try...catch statements
+
+### Basic Error Handling: Using the die() function
+```php
+<?php
+if(file_exists("mytestfile.txt")) {
+  $file = fopen("mytestfile.txt", "r");
+} else {
+  die("Error: The file does not exist.");
+}
+?>
+```
+### Custom Error Handling: Create a function to handle all errors
+```php
+<?php
+function customError($errno, $errstr) {
+  echo "<b>Error:</b> [$errno] $errstr";
+}
+set_error_handler("customError");
+echo($test);
+?>
+```
+### Error Logging: Using the error_log() function
+```php
+<?php
+$test = 2;
+if ($test > 1) {
+  trigger_error("Value must be 1 or below");
+}
+?>
+```
+### Error Reporting: Report simple running errors
+```php
+<?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+?>
+```
+### The "try" and "catch" Block: Exception handling
+```php
+<?php
+try {
+  $test = 2;
+  if($test >= 1) {
+    throw new Exception("Value must be 1 or below");
+  }
+}
+catch(Exception $e) {
+  echo "Message: " . $e->getMessage();
+}
+?>
+```
+
+## How PHP Executes Code.
+
+PHP code execution involves a series of stages that transform human-readable PHP scripts into executable code, ultimately generating the desired output for the user. Here's an overview of this process:
+
+1. **Lexing (Tokenization)**: The PHP interpreter reads the source code and converts it into tokens. Tokens are the smallest units of meaningful code, such as keywords, variables, operators, and literals. This process simplifies the code into manageable pieces for further analysis. 
+
+1. **Parsing**: The parser analyzes the tokens to ensure they follow PHP's syntax rules. It organizes them into a hierarchical structure known as an Abstract Syntax Tree (AST). The AST represents the logical flow and structure of the code, making it easier to understand and manipulate during subsequent stages. 
+
+1. **Compilation**: The AST is then compiled into intermediate low-level binary instructions called opcodes (operation codes). These opcodes are a set of executable instructions that the Zend Engine, PHP's core execution engine, can process. This step bridges the gap between high-level PHP code and machine-level instructions. 
+
+1. **Interpretation**: Finally, the Zend Engine interprets and executes the opcodes. During this phase, the engine performs the operations defined by the opcodes, such as calculations, data manipulations, and interactions with external resources. The result is typically an HTML output sent to the client's browser. 
+
+## Resources
+
+- https://pandectes.io/blog/understanding-the-difference-between-cookies-and-sessions/#:~:text=Cookies%20are%20small%20text%20files,behavior%2C%20and%20enabling%20personalized%20experiences.
+
+- https://www.w3schools.com/PHP/php_error.asp
+
+- https://www.fastcomet.com/tutorials/php-executions-optimization/how-it-works
+- https://stackoverflow.com/questions/2720488/how-exactly-is-a-php-script-executed
